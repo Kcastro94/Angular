@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<p>Modificar datos</p>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+    <p>Introduce los datos de un jugador:</p>
+    <p>Nombre: <input type="text" ng-model="nombre"></p>
+    <p>{{nombre}}</p>
+
+    <p>Fecha de Nacimiento: <input type="date" ng-model="fechaNacimiento"></p>
+    <p>{{fechaNacimiento}}</p>
+
+    <p>Asistencias: <input type="number" ng-model="asistenciasTotales"></p>
+    <p>{{asistenciasTotales}}</p>
+
+    <p>Rebotes: <input type="number" ng-model="rebotesTotales"></p>
+    <p>{{rebotesTotales}}</p>
+
+    <p>Canastas: <input type="number" ng-model="canastasTotales"></p>
+    <p>{{canastasTotales}}</p>
+
+    <p>Faltas: <input type="number" ng-model="faltasTotales"></p>
+    <p>{{faltasTotales}}</p>
+
+    <p>Posición: <input type="text" ng-model="posicion"></p>
+    <p>{{posicion}}</p>
+
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+        $scope.nombre= "Kevin";
+        $scope.fechaNacimiento= "11/12/1994";
+        $scope.asistenciasTotales= "20";
+        $scope.rebotesTotales= "15";
+        $scope.canastasTotales= "50";
+        $scope.faltasTotales= "15";
+        $scope.posicion= "Escolta";
+
+    });
+</script>
+
+</body>
+</html>

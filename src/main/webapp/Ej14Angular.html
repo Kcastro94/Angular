@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<style>
+    table,td{
+        border: 2px solid darkblue;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<p>Click en la cabecera de cada tabla para ordenar:</p>
+<div ng-app="myApp" ng-controller="jugadorCtrl">
+    <table border="1" width="100%">
+        <tr>
+            <th ng-click="orderByMe('nombre')">Nombre</th>
+            <th ng-click="orderByMe('fechaNacimiento')">Fecha Nacimiento</th>
+            <th ng-click="orderByMe('canastasTotale')">Canastas</th>
+            <th ng-click="orderByMe('rebotesTotales')">Rebotes</th>
+            <th ng-click="orderByMe('asistenciasTotales')">Asistencias</th>
+            <th ng-click="orderByMe('posicionCampo')">Posicion Campo</th>
+
+        </tr>
+        <tr ng-repeat="x in jugadores | orderBy:myOrderBy">
+
+            <td ng-if="$odd" style="background-color: lawngreen">{{x.nombre}}</td>
+            <td ng-if="$even">{{x.nombre}}</td>
+
+            <td ng-if="$odd" style="background-color: lightcoral">{{x.fechaNacimiento}}</td>
+            <td ng-if="$even">{{x.fechaNacimiento}}</td>
+
+
+            <td ng-if="$odd" style="background-color: lightgoldenrodyellow">{{x.canastasTotales}}</td>
+            <td ng-if="$even">{{x.canastasTotales}}</td>
+
+            <td ng-if="$odd" style="background-color: lightsteelblue">{{x.rebotesTotales}}</td>
+            <td ng-if="$even">{{x.rebotesTotales}}</td>
+
+            <td ng-if="$odd" style="background-color: lightsalmon">{{x.asistenciasTotales}}</td>
+            <td ng-if="$even">{{x.asistenciasTotales}}</td>
+
+
+            <td ng-if="$odd" style="background-color: lightpink">{{x.posicionCampo}}</td>
+            <td ng-if="$even">{{x.posicionCampo}}</td>
+
+        </tr>
+    </table>
+</div>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('jugadorCtrl', function($scope, $http) {
+        $http.get("api/jugadors").then(function (response) {
+            $scope.jugadores = response.data;
+        });
+        $scope.orderByMe=function(x) {
+            $scope.myOrderBy = x;
+        }
+    });
+
+</script>
+</body>
+</html>
+

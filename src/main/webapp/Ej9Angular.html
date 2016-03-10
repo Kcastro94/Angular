@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="jugadorCtrl">
+<table border="1">
+
+        <tr>
+            <td>{{"Nombre Jugador"}}</td>
+            <td>{{"Nacimiento"}}</td>
+            <td>{{"Canastas"}}</td>
+            <td>{{"Rebotes"}}</td>
+            <td>{{"Asistencias"}}</td>
+            <td>{{"Posicion"}}</td>
+        </tr>
+
+        <tr ng-repeat="x in myData">
+            <td>{{ x.nombre }}</td>
+            <td>{{ x.fechaNacimiento }}</td>
+            <td>{{ x.asistenciasTotales }}</td>
+            <td>{{ x.rebotesTotales }}</td>
+            <td>{{ x.canastasTotales }}</td>
+            <td>{{ x.faltasTotales }}</td>
+            <td>{{ x.posicionCampo}}</td>
+        </tr>
+    </tr>
+</table>
+
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('jugadorCtrl', function($scope, $http) {
+        $http.get("http://127.0.0.1:8080/api/jugadors").then(function (response) {
+            $scope.myData = response.data;
+        });
+    });
+</script>
+
+</body>
+</html>

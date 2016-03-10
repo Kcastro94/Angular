@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="" ng-init="jugador={nombre:'Kevin',fechaNacimiento:'11/12/1994', asistenciasTotales:'20', rebotesTotales:'10',canastasTotales:'300', faltasTotales:'10', posicion:'Alero'}">
+
+    <p>Nombre: {{ jugador.nombre }}</p>
+    <p>Fecha de nacimiento: {{ jugador.fechaNacimiento }}</p>
+    <p>Asistencias: {{ jugador.asistenciasTotales }}</p>
+    <p>Rebotes: {{ jugador.rebotesTotales }}</p>
+    <p>Canastas: {{ jugador.canastasTotales }}</p>
+    <p>Faltas: {{ jugador.faltasTotales }}</p>
+    <p>Posicion: {{ jugador.posicion }}</p>
+
+</div>
+
+</body>
+</html>

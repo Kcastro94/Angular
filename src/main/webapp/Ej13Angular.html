@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<style>
+    table,td{
+        border: 2px solid darkblue;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="jugadorCtrl">
+    <p>Escoge un nombre de jugador:</p>
+    <p><input type="text" ng-model="jugador"></p>
+
+    <table>
+        <tr>
+            <td style="background-color: lightblue">{{"Nombre Jugador"}}</td>
+            <td style="background-color: lightblue">{{"Nacimiento"}}</td>
+            <td style="background-color: lightblue">{{"Canastas"}}</td>
+            <td style="background-color: lightblue">{{"Rebotes"}}</td>
+            <td style="background-color: lightblue">{{"Asistencias"}}</td>
+            <td style="background-color: lightblue">{{"Posicion"}}</td>
+
+        </tr>
+        <tr ng-repeat="x in jugadores | filter:jugador">
+
+            <td ng-if="$odd" style="background-color: lawngreen">{{x.nombre}}</td>
+            <td ng-if="$even">{{x.nombre}}</td>
+
+            <td ng-if="$odd" style="background-color: lightcoral">{{x.fechaNacimiento}}</td>
+            <td ng-if="$even">{{x.fechaNacimiento}}</td>
+
+
+            <td ng-if="$odd" style="background-color: lightgoldenrodyellow">{{x.canastasTotales}}</td>
+            <td ng-if="$even">{{x.canastasTotales}}</td>
+
+            <td ng-if="$odd" style="background-color: lightsteelblue">{{x.rebotesTotales}}</td>
+            <td ng-if="$even">{{x.rebotesTotales}}</td>
+
+            <td ng-if="$odd" style="background-color: lightsalmon">{{x.asistenciasTotales}}</td>
+            <td ng-if="$even">{{x.asistenciasTotales}}</td>
+
+
+            <td ng-if="$odd" style="background-color: lightpink">{{x.posicionCampo}}</td>
+            <td ng-if="$even">{{x.posicionCampo}}</td>
+
+        </tr>
+    </table>
+</div>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('jugadorCtrl', function($scope, $http) {
+        $http.get("api/jugadors").then(function (response) {
+            $scope.jugadores = response.data;
+        });
+    });
+
+</script>
+</body>
+</html>

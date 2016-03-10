@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="jugadoresCtrl">
+
+    <p>Looping with objects:</p>
+    <ul>
+        <li ng-repeat="x in jugadores | orderBy:'canastas'">
+            {{ x.nombre + ', ' + x.canastas }}
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    angular.module('myApp', []).controller('jugadoresCtrl', function($scope) {
+        $scope.jugadores = [
+            {nombre:'Kevin',canastas:1231},
+            {nombre:'Manel',canastas:2},
+            {nombre:'Cris',canastas:21},
+            {nombre:'wdawda', canastas:200}
+        ];
+    });
+</script>
+
+</body>
+</html>
+
